@@ -1,0 +1,8 @@
+C:\Users\ADMIN\source\repos\multidimensional arrays\bin\Debug\multidimensional arrays.exe.config
+C:\Users\ADMIN\source\repos\multidimensional arrays\bin\Debug\multidimensional arrays.exe
+C:\Users\ADMIN\source\repos\multidimensional arrays\bin\Debug\multidimensional arrays.pdb
+C:\Users\ADMIN\source\repos\multidimensional arrays\obj\Debug\multidimensional arrays.csproj.AssemblyReference.cache
+C:\Users\ADMIN\source\repos\multidimensional arrays\obj\Debug\multidimensional arrays.csproj.SuggestedBindingRedirects.cache
+C:\Users\ADMIN\source\repos\multidimensional arrays\obj\Debug\multidimensional arrays.csproj.CoreCompileInputs.cache
+C:\Users\ADMIN\source\repos\multidimensional arrays\obj\Debug\multidimensional arrays.exe
+C:\Users\ADMIN\source\repos\multidimensional arrays\obj\Debug\multidimensional arrays.pdb
