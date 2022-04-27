@@ -1,8 +1,0 @@
-C:\Users\ADMIN\source\repos\Radio\bin\Debug\Radio.exe.config
-C:\Users\ADMIN\source\repos\Radio\bin\Debug\Radio.exe
-C:\Users\ADMIN\source\repos\Radio\bin\Debug\Radio.pdb
-C:\Users\ADMIN\source\repos\Radio\obj\Debug\Radio.csproj.AssemblyReference.cache
-C:\Users\ADMIN\source\repos\Radio\obj\Debug\Radio.csproj.SuggestedBindingRedirects.cache
-C:\Users\ADMIN\source\repos\Radio\obj\Debug\Radio.csproj.CoreCompileInputs.cache
-C:\Users\ADMIN\source\repos\Radio\obj\Debug\Radio.exe
-C:\Users\ADMIN\source\repos\Radio\obj\Debug\Radio.pdb
