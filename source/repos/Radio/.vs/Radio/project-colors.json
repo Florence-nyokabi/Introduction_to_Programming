@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "bea315c0-3bd9-4e27-9d3e-7fbaef2e66b6": {
+      "ProjectGuid": "bea315c0-3bd9-4e27-9d3e-7fbaef2e66b6",
+      "DisplayName": "Radio",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}
