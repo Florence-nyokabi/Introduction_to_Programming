@@ -1,0 +1,4 @@
+C:\Users\ADMIN\source\repos\Database1\obj\Debug\Database1.csproj.AssemblyReference.cache
+C:\Users\ADMIN\source\repos\Database1\obj\Debug\Database1.csproj.SuggestedBindingRedirects.cache
+C:\Users\ADMIN\source\repos\Database1\obj\Debug\Database1.exe.config
+C:\Users\ADMIN\source\repos\Database1\obj\Debug\Database1.csproj.CoreCompileInputs.cache
