@@ -1,0 +1,11 @@
+C:\Users\ADMIN\source\repos\SCHOOL1_Database\bin\Debug\SCHOOL1_Database.exe.config
+C:\Users\ADMIN\source\repos\SCHOOL1_Database\bin\Debug\SCHOOL1_Database.exe
+C:\Users\ADMIN\source\repos\SCHOOL1_Database\bin\Debug\SCHOOL1_Database.pdb
+C:\Users\ADMIN\source\repos\SCHOOL1_Database\bin\Debug\EntityFramework.dll
+C:\Users\ADMIN\source\repos\SCHOOL1_Database\bin\Debug\EntityFramework.xml
+C:\Users\ADMIN\source\repos\SCHOOL1_Database\obj\Debug\SCHOOL1_Database.csproj.AssemblyReference.cache
+C:\Users\ADMIN\source\repos\SCHOOL1_Database\obj\Debug\SCHOOL1_Database.csproj.SuggestedBindingRedirects.cache
+C:\Users\ADMIN\source\repos\SCHOOL1_Database\obj\Debug\SCHOOL1_Database.csproj.CoreCompileInputs.cache
+C:\Users\ADMIN\source\repos\SCHOOL1_Database\obj\Debug\SCHOOL1_Database.csproj.CopyComplete
+C:\Users\ADMIN\source\repos\SCHOOL1_Database\obj\Debug\SCHOOL1_Database.exe
+C:\Users\ADMIN\source\repos\SCHOOL1_Database\obj\Debug\SCHOOL1_Database.pdb

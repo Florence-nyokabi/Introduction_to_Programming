@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SCHOOL1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="CLASS">
+    <Key>
+      <PropertyRef Name="CLASS_ID" />
+    </Key>
+    <Property Name="CLASS_ID" Type="Int32" Nullable="false" />
+    <Property Name="CLASS_NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="PROF_ID" Type="Int32" />
+    <Property Name="COURSE_ID" Type="Int32" />
+    <Property Name="ROOM_ID" Type="Int32" />
+    <NavigationProperty Name="COURSE" Relationship="Self.FK__CLASS__COURSE_ID__2B3F6F97" FromRole="CLASS" ToRole="COURSE" />
+    <NavigationProperty Name="PROFESSOR" Relationship="Self.FK__CLASS__ROOM_ID__2A4B4B5E" FromRole="CLASS" ToRole="PROFESSOR" />
+    <NavigationProperty Name="ROOM" Relationship="Self.FK__CLASS__ROOM_ID__2C3393D0" FromRole="CLASS" ToRole="ROOM" />
+  </EntityType>
+  <EntityType Name="COURSE">
+    <Key>
+      <PropertyRef Name="COURSE_ID" />
+    </Key>
+    <Property Name="COURSE_ID" Type="Int32" Nullable="false" />
+    <Property Name="COURSE_NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="CLASSes" Relationship="Self.FK__CLASS__COURSE_ID__2B3F6F97" FromRole="COURSE" ToRole="CLASS" />
+  </EntityType>
+  <EntityType Name="PROFESSOR">
+    <Key>
+      <PropertyRef Name="PROF_ID" />
+    </Key>
+    <Property Name="PROF_ID" Type="Int32" Nullable="false" />
+    <Property Name="PROF_LNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PROF_FNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="CLASSes" Relationship="Self.FK__CLASS__ROOM_ID__2A4B4B5E" FromRole="PROFESSOR" ToRole="CLASS" />
+  </EntityType>
+  <EntityType Name="ROOM">
+    <Key>
+      <PropertyRef Name="ROOM_ID" />
+    </Key>
+    <Property Name="ROOM_ID" Type="Int32" Nullable="false" />
+    <Property Name="ROOM_LOC" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ROOM_CAP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="CLASSes" Relationship="Self.FK__CLASS__ROOM_ID__2C3393D0" FromRole="ROOM" ToRole="CLASS" />
+  </EntityType>
+  <EntityType Name="STUDENT_">
+    <Key>
+      <PropertyRef Name="STUD_ID" />
+    </Key>
+    <Property Name="STUD_ID" Type="Int32" Nullable="false" />
+    <Property Name="STUD_FNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="STUD_LNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="STUD_STREET" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="STUD_CITY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="STUD_ZIP" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK__CLASS__COURSE_ID__2B3F6F97">
+    <End Role="COURSE" Type="Self.COURSE" Multiplicity="0..1" />
+    <End Role="CLASS" Type="Self.CLASS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="COURSE">
+        <PropertyRef Name="COURSE_ID" />
+      </Principal>
+      <Dependent Role="CLASS">
+        <PropertyRef Name="COURSE_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CLASS__ROOM_ID__2A4B4B5E">
+    <End Role="PROFESSOR" Type="Self.PROFESSOR" Multiplicity="0..1" />
+    <End Role="CLASS" Type="Self.CLASS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PROFESSOR">
+        <PropertyRef Name="PROF_ID" />
+      </Principal>
+      <Dependent Role="CLASS">
+        <PropertyRef Name="PROF_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CLASS__ROOM_ID__2C3393D0">
+    <End Role="ROOM" Type="Self.ROOM" Multiplicity="0..1" />
+    <End Role="CLASS" Type="Self.CLASS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ROOM">
+        <PropertyRef Name="ROOM_ID" />
+      </Principal>
+      <Dependent Role="CLASS">
+        <PropertyRef Name="ROOM_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="SCHOOL1Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="CLASSes" EntityType="Self.CLASS" />
+    <EntitySet Name="COURSEs" EntityType="Self.COURSE" />
+    <EntitySet Name="PROFESSORs" EntityType="Self.PROFESSOR" />
+    <EntitySet Name="ROOMs" EntityType="Self.ROOM" />
+    <EntitySet Name="STUDENT_" EntityType="Self.STUDENT_" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <AssociationSet Name="FK__CLASS__COURSE_ID__2B3F6F97" Association="Self.FK__CLASS__COURSE_ID__2B3F6F97">
+      <End Role="COURSE" EntitySet="COURSEs" />
+      <End Role="CLASS" EntitySet="CLASSes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CLASS__ROOM_ID__2A4B4B5E" Association="Self.FK__CLASS__ROOM_ID__2A4B4B5E">
+      <End Role="PROFESSOR" EntitySet="PROFESSORs" />
+      <End Role="CLASS" EntitySet="CLASSes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CLASS__ROOM_ID__2C3393D0" Association="Self.FK__CLASS__ROOM_ID__2C3393D0">
+      <End Role="ROOM" EntitySet="ROOMs" />
+      <End Role="CLASS" EntitySet="CLASSes" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

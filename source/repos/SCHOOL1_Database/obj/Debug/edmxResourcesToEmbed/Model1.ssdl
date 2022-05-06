@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SCHOOL1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CLASS">
+    <Key>
+      <PropertyRef Name="CLASS_ID" />
+    </Key>
+    <Property Name="CLASS_ID" Type="int" Nullable="false" />
+    <Property Name="CLASS_NAME" Type="varchar" MaxLength="255" />
+    <Property Name="PROF_ID" Type="int" />
+    <Property Name="COURSE_ID" Type="int" />
+    <Property Name="ROOM_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="COURSE">
+    <Key>
+      <PropertyRef Name="COURSE_ID" />
+    </Key>
+    <Property Name="COURSE_ID" Type="int" Nullable="false" />
+    <Property Name="COURSE_NAME" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'SCHOOL1.dbo.ENROLL' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="ENROLL">
+          <Property Name="STUD_ID" Type="int" />
+          <Property Name="CLASS_ID" Type="int" />
+          <Property Name="GRADE" Type="varchar" MaxLength="3" />
+        </EntityType>-->
+  <EntityType Name="PROFESSOR">
+    <Key>
+      <PropertyRef Name="PROF_ID" />
+    </Key>
+    <Property Name="PROF_ID" Type="int" Nullable="false" />
+    <Property Name="PROF_LNAME" Type="varchar" MaxLength="50" />
+    <Property Name="PROF_FNAME" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="ROOM">
+    <Key>
+      <PropertyRef Name="ROOM_ID" />
+    </Key>
+    <Property Name="ROOM_ID" Type="int" Nullable="false" />
+    <Property Name="ROOM_LOC" Type="varchar" MaxLength="50" />
+    <Property Name="ROOM_CAP" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="STUDENT_">
+    <Key>
+      <PropertyRef Name="STUD_ID" />
+    </Key>
+    <Property Name="STUD_ID" Type="int" Nullable="false" />
+    <Property Name="STUD_FNAME" Type="varchar" MaxLength="50" />
+    <Property Name="STUD_LNAME" Type="varchar" MaxLength="50" />
+    <Property Name="STUD_STREET" Type="varchar" MaxLength="255" />
+    <Property Name="STUD_CITY" Type="varchar" MaxLength="50" />
+    <Property Name="STUD_ZIP" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="FK__CLASS__COURSE_ID__2B3F6F97">
+    <End Role="COURSE" Type="Self.COURSE" Multiplicity="0..1" />
+    <End Role="CLASS" Type="Self.CLASS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="COURSE">
+        <PropertyRef Name="COURSE_ID" />
+      </Principal>
+      <Dependent Role="CLASS">
+        <PropertyRef Name="COURSE_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CLASS__ROOM_ID__2A4B4B5E">
+    <End Role="PROFESSOR" Type="Self.PROFESSOR" Multiplicity="0..1" />
+    <End Role="CLASS" Type="Self.CLASS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PROFESSOR">
+        <PropertyRef Name="PROF_ID" />
+      </Principal>
+      <Dependent Role="CLASS">
+        <PropertyRef Name="PROF_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CLASS__ROOM_ID__2C3393D0">
+    <End Role="ROOM" Type="Self.ROOM" Multiplicity="0..1" />
+    <End Role="CLASS" Type="Self.CLASS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ROOM">
+        <PropertyRef Name="ROOM_ID" />
+      </Principal>
+      <Dependent Role="CLASS">
+        <PropertyRef Name="ROOM_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <!--Errors Found During Generation:
+error 6004: The table 'SCHOOL1.dbo.ENROLL' is referenced by a relationship, but cannot be found.
+        <Association Name="FK__ENROLL__CLASS_ID__30F848ED" />-->
+  <!--Errors Found During Generation:
+error 6004: The table 'SCHOOL1.dbo.ENROLL' is referenced by a relationship, but cannot be found.
+        <Association Name="FK__ENROLL__STUD_ID__300424B4" />-->
+  <EntityContainer Name="SCHOOL1ModelStoreContainer">
+    <EntitySet Name="CLASS" EntityType="Self.CLASS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="COURSE" EntityType="Self.COURSE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PROFESSOR" EntityType="Self.PROFESSOR" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ROOM" EntityType="Self.ROOM" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="STUDENT_" EntityType="Self.STUDENT_" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__CLASS__COURSE_ID__2B3F6F97" Association="Self.FK__CLASS__COURSE_ID__2B3F6F97">
+      <End Role="COURSE" EntitySet="COURSE" />
+      <End Role="CLASS" EntitySet="CLASS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CLASS__ROOM_ID__2A4B4B5E" Association="Self.FK__CLASS__ROOM_ID__2A4B4B5E">
+      <End Role="PROFESSOR" EntitySet="PROFESSOR" />
+      <End Role="CLASS" EntitySet="CLASS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CLASS__ROOM_ID__2C3393D0" Association="Self.FK__CLASS__ROOM_ID__2C3393D0">
+      <End Role="ROOM" EntitySet="ROOM" />
+      <End Role="CLASS" EntitySet="CLASS" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

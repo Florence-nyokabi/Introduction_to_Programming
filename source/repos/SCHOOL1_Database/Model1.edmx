@@ -1,0 +1,341 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="SCHOOL1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CLASS">
+          <Key>
+            <PropertyRef Name="CLASS_ID" />
+          </Key>
+          <Property Name="CLASS_ID" Type="int" Nullable="false" />
+          <Property Name="CLASS_NAME" Type="varchar" MaxLength="255" />
+          <Property Name="PROF_ID" Type="int" />
+          <Property Name="COURSE_ID" Type="int" />
+          <Property Name="ROOM_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="COURSE">
+          <Key>
+            <PropertyRef Name="COURSE_ID" />
+          </Key>
+          <Property Name="COURSE_ID" Type="int" Nullable="false" />
+          <Property Name="COURSE_NAME" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'SCHOOL1.dbo.ENROLL' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="ENROLL">
+          <Property Name="STUD_ID" Type="int" />
+          <Property Name="CLASS_ID" Type="int" />
+          <Property Name="GRADE" Type="varchar" MaxLength="3" />
+        </EntityType>-->
+        <EntityType Name="PROFESSOR">
+          <Key>
+            <PropertyRef Name="PROF_ID" />
+          </Key>
+          <Property Name="PROF_ID" Type="int" Nullable="false" />
+          <Property Name="PROF_LNAME" Type="varchar" MaxLength="50" />
+          <Property Name="PROF_FNAME" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ROOM">
+          <Key>
+            <PropertyRef Name="ROOM_ID" />
+          </Key>
+          <Property Name="ROOM_ID" Type="int" Nullable="false" />
+          <Property Name="ROOM_LOC" Type="varchar" MaxLength="50" />
+          <Property Name="ROOM_CAP" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="STUDENT_">
+          <Key>
+            <PropertyRef Name="STUD_ID" />
+          </Key>
+          <Property Name="STUD_ID" Type="int" Nullable="false" />
+          <Property Name="STUD_FNAME" Type="varchar" MaxLength="50" />
+          <Property Name="STUD_LNAME" Type="varchar" MaxLength="50" />
+          <Property Name="STUD_STREET" Type="varchar" MaxLength="255" />
+          <Property Name="STUD_CITY" Type="varchar" MaxLength="50" />
+          <Property Name="STUD_ZIP" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK__CLASS__COURSE_ID__2B3F6F97">
+          <End Role="COURSE" Type="Self.COURSE" Multiplicity="0..1" />
+          <End Role="CLASS" Type="Self.CLASS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COURSE">
+              <PropertyRef Name="COURSE_ID" />
+            </Principal>
+            <Dependent Role="CLASS">
+              <PropertyRef Name="COURSE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CLASS__ROOM_ID__2A4B4B5E">
+          <End Role="PROFESSOR" Type="Self.PROFESSOR" Multiplicity="0..1" />
+          <End Role="CLASS" Type="Self.CLASS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROFESSOR">
+              <PropertyRef Name="PROF_ID" />
+            </Principal>
+            <Dependent Role="CLASS">
+              <PropertyRef Name="PROF_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CLASS__ROOM_ID__2C3393D0">
+          <End Role="ROOM" Type="Self.ROOM" Multiplicity="0..1" />
+          <End Role="CLASS" Type="Self.CLASS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ROOM">
+              <PropertyRef Name="ROOM_ID" />
+            </Principal>
+            <Dependent Role="CLASS">
+              <PropertyRef Name="ROOM_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <!--Errors Found During Generation:
+error 6004: The table 'SCHOOL1.dbo.ENROLL' is referenced by a relationship, but cannot be found.
+        <Association Name="FK__ENROLL__CLASS_ID__30F848ED" />-->
+        <!--Errors Found During Generation:
+error 6004: The table 'SCHOOL1.dbo.ENROLL' is referenced by a relationship, but cannot be found.
+        <Association Name="FK__ENROLL__STUD_ID__300424B4" />-->
+        <EntityContainer Name="SCHOOL1ModelStoreContainer">
+          <EntitySet Name="CLASS" EntityType="Self.CLASS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="COURSE" EntityType="Self.COURSE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PROFESSOR" EntityType="Self.PROFESSOR" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ROOM" EntityType="Self.ROOM" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="STUDENT_" EntityType="Self.STUDENT_" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__CLASS__COURSE_ID__2B3F6F97" Association="Self.FK__CLASS__COURSE_ID__2B3F6F97">
+            <End Role="COURSE" EntitySet="COURSE" />
+            <End Role="CLASS" EntitySet="CLASS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CLASS__ROOM_ID__2A4B4B5E" Association="Self.FK__CLASS__ROOM_ID__2A4B4B5E">
+            <End Role="PROFESSOR" EntitySet="PROFESSOR" />
+            <End Role="CLASS" EntitySet="CLASS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CLASS__ROOM_ID__2C3393D0" Association="Self.FK__CLASS__ROOM_ID__2C3393D0">
+            <End Role="ROOM" EntitySet="ROOM" />
+            <End Role="CLASS" EntitySet="CLASS" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SCHOOL1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CLASS">
+          <Key>
+            <PropertyRef Name="CLASS_ID" />
+          </Key>
+          <Property Name="CLASS_ID" Type="Int32" Nullable="false" />
+          <Property Name="CLASS_NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="PROF_ID" Type="Int32" />
+          <Property Name="COURSE_ID" Type="Int32" />
+          <Property Name="ROOM_ID" Type="Int32" />
+          <NavigationProperty Name="COURSE" Relationship="Self.FK__CLASS__COURSE_ID__2B3F6F97" FromRole="CLASS" ToRole="COURSE" />
+          <NavigationProperty Name="PROFESSOR" Relationship="Self.FK__CLASS__ROOM_ID__2A4B4B5E" FromRole="CLASS" ToRole="PROFESSOR" />
+          <NavigationProperty Name="ROOM" Relationship="Self.FK__CLASS__ROOM_ID__2C3393D0" FromRole="CLASS" ToRole="ROOM" />
+        </EntityType>
+        <EntityType Name="COURSE">
+          <Key>
+            <PropertyRef Name="COURSE_ID" />
+          </Key>
+          <Property Name="COURSE_ID" Type="Int32" Nullable="false" />
+          <Property Name="COURSE_NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CLASSes" Relationship="Self.FK__CLASS__COURSE_ID__2B3F6F97" FromRole="COURSE" ToRole="CLASS" />
+        </EntityType>
+        <EntityType Name="PROFESSOR">
+          <Key>
+            <PropertyRef Name="PROF_ID" />
+          </Key>
+          <Property Name="PROF_ID" Type="Int32" Nullable="false" />
+          <Property Name="PROF_LNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PROF_FNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CLASSes" Relationship="Self.FK__CLASS__ROOM_ID__2A4B4B5E" FromRole="PROFESSOR" ToRole="CLASS" />
+        </EntityType>
+        <EntityType Name="ROOM">
+          <Key>
+            <PropertyRef Name="ROOM_ID" />
+          </Key>
+          <Property Name="ROOM_ID" Type="Int32" Nullable="false" />
+          <Property Name="ROOM_LOC" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ROOM_CAP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CLASSes" Relationship="Self.FK__CLASS__ROOM_ID__2C3393D0" FromRole="ROOM" ToRole="CLASS" />
+        </EntityType>
+        <EntityType Name="STUDENT_">
+          <Key>
+            <PropertyRef Name="STUD_ID" />
+          </Key>
+          <Property Name="STUD_ID" Type="Int32" Nullable="false" />
+          <Property Name="STUD_FNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="STUD_LNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="STUD_STREET" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="STUD_CITY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="STUD_ZIP" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK__CLASS__COURSE_ID__2B3F6F97">
+          <End Role="COURSE" Type="Self.COURSE" Multiplicity="0..1" />
+          <End Role="CLASS" Type="Self.CLASS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COURSE">
+              <PropertyRef Name="COURSE_ID" />
+            </Principal>
+            <Dependent Role="CLASS">
+              <PropertyRef Name="COURSE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CLASS__ROOM_ID__2A4B4B5E">
+          <End Role="PROFESSOR" Type="Self.PROFESSOR" Multiplicity="0..1" />
+          <End Role="CLASS" Type="Self.CLASS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROFESSOR">
+              <PropertyRef Name="PROF_ID" />
+            </Principal>
+            <Dependent Role="CLASS">
+              <PropertyRef Name="PROF_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CLASS__ROOM_ID__2C3393D0">
+          <End Role="ROOM" Type="Self.ROOM" Multiplicity="0..1" />
+          <End Role="CLASS" Type="Self.CLASS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ROOM">
+              <PropertyRef Name="ROOM_ID" />
+            </Principal>
+            <Dependent Role="CLASS">
+              <PropertyRef Name="ROOM_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SCHOOL1Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CLASSes" EntityType="Self.CLASS" />
+          <EntitySet Name="COURSEs" EntityType="Self.COURSE" />
+          <EntitySet Name="PROFESSORs" EntityType="Self.PROFESSOR" />
+          <EntitySet Name="ROOMs" EntityType="Self.ROOM" />
+          <EntitySet Name="STUDENT_" EntityType="Self.STUDENT_" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <AssociationSet Name="FK__CLASS__COURSE_ID__2B3F6F97" Association="Self.FK__CLASS__COURSE_ID__2B3F6F97">
+            <End Role="COURSE" EntitySet="COURSEs" />
+            <End Role="CLASS" EntitySet="CLASSes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CLASS__ROOM_ID__2A4B4B5E" Association="Self.FK__CLASS__ROOM_ID__2A4B4B5E">
+            <End Role="PROFESSOR" EntitySet="PROFESSORs" />
+            <End Role="CLASS" EntitySet="CLASSes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CLASS__ROOM_ID__2C3393D0" Association="Self.FK__CLASS__ROOM_ID__2C3393D0">
+            <End Role="ROOM" EntitySet="ROOMs" />
+            <End Role="CLASS" EntitySet="CLASSes" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SCHOOL1ModelStoreContainer" CdmEntityContainer="SCHOOL1Entities">
+          <EntitySetMapping Name="CLASSes">
+            <EntityTypeMapping TypeName="SCHOOL1Model.CLASS">
+              <MappingFragment StoreEntitySet="CLASS">
+                <ScalarProperty Name="CLASS_ID" ColumnName="CLASS_ID" />
+                <ScalarProperty Name="CLASS_NAME" ColumnName="CLASS_NAME" />
+                <ScalarProperty Name="PROF_ID" ColumnName="PROF_ID" />
+                <ScalarProperty Name="COURSE_ID" ColumnName="COURSE_ID" />
+                <ScalarProperty Name="ROOM_ID" ColumnName="ROOM_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="COURSEs">
+            <EntityTypeMapping TypeName="SCHOOL1Model.COURSE">
+              <MappingFragment StoreEntitySet="COURSE">
+                <ScalarProperty Name="COURSE_ID" ColumnName="COURSE_ID" />
+                <ScalarProperty Name="COURSE_NAME" ColumnName="COURSE_NAME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PROFESSORs">
+            <EntityTypeMapping TypeName="SCHOOL1Model.PROFESSOR">
+              <MappingFragment StoreEntitySet="PROFESSOR">
+                <ScalarProperty Name="PROF_ID" ColumnName="PROF_ID" />
+                <ScalarProperty Name="PROF_LNAME" ColumnName="PROF_LNAME" />
+                <ScalarProperty Name="PROF_FNAME" ColumnName="PROF_FNAME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ROOMs">
+            <EntityTypeMapping TypeName="SCHOOL1Model.ROOM">
+              <MappingFragment StoreEntitySet="ROOM">
+                <ScalarProperty Name="ROOM_ID" ColumnName="ROOM_ID" />
+                <ScalarProperty Name="ROOM_LOC" ColumnName="ROOM_LOC" />
+                <ScalarProperty Name="ROOM_CAP" ColumnName="ROOM_CAP" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="STUDENT_">
+            <EntityTypeMapping TypeName="SCHOOL1Model.STUDENT_">
+              <MappingFragment StoreEntitySet="STUDENT_">
+                <ScalarProperty Name="STUD_ID" ColumnName="STUD_ID" />
+                <ScalarProperty Name="STUD_FNAME" ColumnName="STUD_FNAME" />
+                <ScalarProperty Name="STUD_LNAME" ColumnName="STUD_LNAME" />
+                <ScalarProperty Name="STUD_STREET" ColumnName="STUD_STREET" />
+                <ScalarProperty Name="STUD_CITY" ColumnName="STUD_CITY" />
+                <ScalarProperty Name="STUD_ZIP" ColumnName="STUD_ZIP" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="SCHOOL1Model.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
