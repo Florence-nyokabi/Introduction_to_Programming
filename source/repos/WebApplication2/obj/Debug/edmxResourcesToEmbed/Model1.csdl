@@ -1,0 +1,274 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MusicologyWarehouseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Album">
+    <Key>
+      <PropertyRef Name="Album_ISBN" />
+    </Key>
+    <Property Name="Album_ISBN" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Album_Artist" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Album_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Category_ID" Type="Int32" />
+    <Property Name="Album_Year" Type="Int32" />
+    <Property Name="Album_Run_Time" Type="DateTime" Precision="3" />
+    <Property Name="Type_ID" Type="Int32" />
+    <Property Name="Price_ID" Type="Int32" />
+    <NavigationProperty Name="Album_Category" Relationship="Self.FK__Album__Category___31EC6D26" FromRole="Album" ToRole="Album_Category" />
+    <NavigationProperty Name="Album_Price" Relationship="Self.FK__Album__Price_ID__33D4B598" FromRole="Album" ToRole="Album_Price" />
+    <NavigationProperty Name="Album_Type" Relationship="Self.FK__Album__Type_ID__32E0915F" FromRole="Album" ToRole="Album_Type" />
+    <NavigationProperty Name="Stock_Item" Relationship="Self.FK__Stock_Ite__Album__36B12243" FromRole="Album" ToRole="Stock_Item" />
+  </EntityType>
+  <EntityType Name="Album_Category">
+    <Key>
+      <PropertyRef Name="Category_ID" />
+    </Key>
+    <Property Name="Category_ID" Type="Int32" Nullable="false" />
+    <Property Name="Category_Desc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Albums" Relationship="Self.FK__Album__Category___31EC6D26" FromRole="Album_Category" ToRole="Album" />
+  </EntityType>
+  <EntityType Name="Album_Price">
+    <Key>
+      <PropertyRef Name="Price_ID" />
+    </Key>
+    <Property Name="Price_ID" Type="Int32" Nullable="false" />
+    <Property Name="Price_Amount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Price_Desc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Albums" Relationship="Self.FK__Album__Price_ID__33D4B598" FromRole="Album_Price" ToRole="Album" />
+  </EntityType>
+  <EntityType Name="Album_Type">
+    <Key>
+      <PropertyRef Name="Type_ID" />
+    </Key>
+    <Property Name="Type_ID" Type="Int32" Nullable="false" />
+    <Property Name="Type_Desc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Albums" Relationship="Self.FK__Album__Type_ID__32E0915F" FromRole="Album_Type" ToRole="Album" />
+  </EntityType>
+  <EntityType Name="Branch">
+    <Key>
+      <PropertyRef Name="Branch_ID" />
+    </Key>
+    <Property Name="Branch_ID" Type="Int32" Nullable="false" />
+    <Property Name="Branch_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Branch_Floor_Size" Type="Int32" />
+    <Property Name="Branch_Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Branch_Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Branch_Contact_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Branch_City" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Invoices" Relationship="Self.FK__Invoice__Branch___286302EC" FromRole="Branch" ToRole="Invoice" />
+    <NavigationProperty Name="Stock_Item" Relationship="Self.FK__Stock_Ite__Branc__37A5467C" FromRole="Branch" ToRole="Stock_Item" />
+  </EntityType>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="Customer_Acc_No" />
+    </Key>
+    <Property Name="Customer_Acc_No" Type="Int32" Nullable="false" />
+    <Property Name="Customer_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Customer_Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Customer_Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Customer_Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Customer_Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Customer_City" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Invoices" Relationship="Self.FK__Invoice__Custome__29572725" FromRole="Customer" ToRole="Invoice" />
+  </EntityType>
+  <EntityType Name="Invoice">
+    <Key>
+      <PropertyRef Name="Invoice_Num" />
+    </Key>
+    <Property Name="Invoice_Num" Type="Int32" Nullable="false" />
+    <Property Name="Branch_ID" Type="Int32" />
+    <Property Name="Customer_Acc_No" Type="Int32" />
+    <Property Name="Invoice_date" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Branch" Relationship="Self.FK__Invoice__Branch___286302EC" FromRole="Invoice" ToRole="Branch" />
+    <NavigationProperty Name="Customer" Relationship="Self.FK__Invoice__Custome__29572725" FromRole="Invoice" ToRole="Customer" />
+    <NavigationProperty Name="Invoice_Line" Relationship="Self.FK__Invoice_L__Invoi__3A81B327" FromRole="Invoice" ToRole="Invoice_Line" />
+  </EntityType>
+  <EntityType Name="Invoice_Line">
+    <Key>
+      <PropertyRef Name="Invoice_Num" />
+      <PropertyRef Name="Album_ISBN" />
+    </Key>
+    <Property Name="Invoice_Num" Type="Int32" Nullable="false" />
+    <Property Name="Album_ISBN" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Purchase_Quantity" Type="Int32" />
+    <Property Name="Item_Unit_Price" Type="Decimal" Precision="19" Scale="4" />
+    <NavigationProperty Name="Invoice" Relationship="Self.FK__Invoice_L__Invoi__3A81B327" FromRole="Invoice_Line" ToRole="Invoice" />
+    <NavigationProperty Name="Stock_Item" Relationship="Self.FK__Invoice_L__Album__3B75D760" FromRole="Invoice_Line" ToRole="Stock_Item" />
+  </EntityType>
+  <EntityType Name="Stock_Item">
+    <Key>
+      <PropertyRef Name="Album_ISBN" />
+    </Key>
+    <Property Name="Album_ISBN" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Branch_ID" Type="Int32" />
+    <Property Name="Stock_Total_Quantity" Type="Int32" />
+    <Property Name="Stock_Quantity_Sold" Type="Int32" />
+    <NavigationProperty Name="Album" Relationship="Self.FK__Stock_Ite__Album__36B12243" FromRole="Stock_Item" ToRole="Album" />
+    <NavigationProperty Name="Branch" Relationship="Self.FK__Stock_Ite__Branc__37A5467C" FromRole="Stock_Item" ToRole="Branch" />
+    <NavigationProperty Name="Invoice_Line" Relationship="Self.FK__Invoice_L__Album__3B75D760" FromRole="Stock_Item" ToRole="Invoice_Line" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK__Album__Category___31EC6D26">
+    <End Role="Album_Category" Type="Self.Album_Category" Multiplicity="0..1" />
+    <End Role="Album" Type="Self.Album" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Album_Category">
+        <PropertyRef Name="Category_ID" />
+      </Principal>
+      <Dependent Role="Album">
+        <PropertyRef Name="Category_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Album__Price_ID__33D4B598">
+    <End Role="Album_Price" Type="Self.Album_Price" Multiplicity="0..1" />
+    <End Role="Album" Type="Self.Album" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Album_Price">
+        <PropertyRef Name="Price_ID" />
+      </Principal>
+      <Dependent Role="Album">
+        <PropertyRef Name="Price_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Album__Type_ID__32E0915F">
+    <End Role="Album_Type" Type="Self.Album_Type" Multiplicity="0..1" />
+    <End Role="Album" Type="Self.Album" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Album_Type">
+        <PropertyRef Name="Type_ID" />
+      </Principal>
+      <Dependent Role="Album">
+        <PropertyRef Name="Type_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Stock_Ite__Album__36B12243">
+    <End Role="Album" Type="Self.Album" Multiplicity="1" />
+    <End Role="Stock_Item" Type="Self.Stock_Item" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Album">
+        <PropertyRef Name="Album_ISBN" />
+      </Principal>
+      <Dependent Role="Stock_Item">
+        <PropertyRef Name="Album_ISBN" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Invoice__Branch___286302EC">
+    <End Role="Branch" Type="Self.Branch" Multiplicity="0..1" />
+    <End Role="Invoice" Type="Self.Invoice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Branch">
+        <PropertyRef Name="Branch_ID" />
+      </Principal>
+      <Dependent Role="Invoice">
+        <PropertyRef Name="Branch_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Stock_Ite__Branc__37A5467C">
+    <End Role="Branch" Type="Self.Branch" Multiplicity="0..1" />
+    <End Role="Stock_Item" Type="Self.Stock_Item" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Branch">
+        <PropertyRef Name="Branch_ID" />
+      </Principal>
+      <Dependent Role="Stock_Item">
+        <PropertyRef Name="Branch_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Invoice__Custome__29572725">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+    <End Role="Invoice" Type="Self.Invoice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="Customer_Acc_No" />
+      </Principal>
+      <Dependent Role="Invoice">
+        <PropertyRef Name="Customer_Acc_No" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Invoice_L__Invoi__3A81B327">
+    <End Role="Invoice" Type="Self.Invoice" Multiplicity="1" />
+    <End Role="Invoice_Line" Type="Self.Invoice_Line" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Invoice">
+        <PropertyRef Name="Invoice_Num" />
+      </Principal>
+      <Dependent Role="Invoice_Line">
+        <PropertyRef Name="Invoice_Num" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Invoice_L__Album__3B75D760">
+    <End Role="Stock_Item" Type="Self.Stock_Item" Multiplicity="1" />
+    <End Role="Invoice_Line" Type="Self.Invoice_Line" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Stock_Item">
+        <PropertyRef Name="Album_ISBN" />
+      </Principal>
+      <Dependent Role="Invoice_Line">
+        <PropertyRef Name="Album_ISBN" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MusicologyWarehouseEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Albums" EntityType="Self.Album" />
+    <EntitySet Name="Album_Category" EntityType="Self.Album_Category" />
+    <EntitySet Name="Album_Price" EntityType="Self.Album_Price" />
+    <EntitySet Name="Album_Type" EntityType="Self.Album_Type" />
+    <EntitySet Name="Branches" EntityType="Self.Branch" />
+    <EntitySet Name="Customers" EntityType="Self.Customer" />
+    <EntitySet Name="Invoices" EntityType="Self.Invoice" />
+    <EntitySet Name="Invoice_Line" EntityType="Self.Invoice_Line" />
+    <EntitySet Name="Stock_Item" EntityType="Self.Stock_Item" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <AssociationSet Name="FK__Album__Category___31EC6D26" Association="Self.FK__Album__Category___31EC6D26">
+      <End Role="Album_Category" EntitySet="Album_Category" />
+      <End Role="Album" EntitySet="Albums" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Album__Price_ID__33D4B598" Association="Self.FK__Album__Price_ID__33D4B598">
+      <End Role="Album_Price" EntitySet="Album_Price" />
+      <End Role="Album" EntitySet="Albums" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Album__Type_ID__32E0915F" Association="Self.FK__Album__Type_ID__32E0915F">
+      <End Role="Album_Type" EntitySet="Album_Type" />
+      <End Role="Album" EntitySet="Albums" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Stock_Ite__Album__36B12243" Association="Self.FK__Stock_Ite__Album__36B12243">
+      <End Role="Album" EntitySet="Albums" />
+      <End Role="Stock_Item" EntitySet="Stock_Item" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Invoice__Branch___286302EC" Association="Self.FK__Invoice__Branch___286302EC">
+      <End Role="Branch" EntitySet="Branches" />
+      <End Role="Invoice" EntitySet="Invoices" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Stock_Ite__Branc__37A5467C" Association="Self.FK__Stock_Ite__Branc__37A5467C">
+      <End Role="Branch" EntitySet="Branches" />
+      <End Role="Stock_Item" EntitySet="Stock_Item" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Invoice__Custome__29572725" Association="Self.FK__Invoice__Custome__29572725">
+      <End Role="Customer" EntitySet="Customers" />
+      <End Role="Invoice" EntitySet="Invoices" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Invoice_L__Invoi__3A81B327" Association="Self.FK__Invoice_L__Invoi__3A81B327">
+      <End Role="Invoice" EntitySet="Invoices" />
+      <End Role="Invoice_Line" EntitySet="Invoice_Line" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Invoice_L__Album__3B75D760" Association="Self.FK__Invoice_L__Album__3B75D760">
+      <End Role="Stock_Item" EntitySet="Stock_Item" />
+      <End Role="Invoice_Line" EntitySet="Invoice_Line" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

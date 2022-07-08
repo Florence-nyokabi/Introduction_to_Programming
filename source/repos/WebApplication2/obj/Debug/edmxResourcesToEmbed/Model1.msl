@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MusicologyWarehouseModelStoreContainer" CdmEntityContainer="MusicologyWarehouseEntities">
+    <EntitySetMapping Name="Albums">
+      <EntityTypeMapping TypeName="MusicologyWarehouseModel.Album">
+        <MappingFragment StoreEntitySet="Album">
+          <ScalarProperty Name="Album_ISBN" ColumnName="Album_ISBN" />
+          <ScalarProperty Name="Album_Artist" ColumnName="Album_Artist" />
+          <ScalarProperty Name="Album_Name" ColumnName="Album_Name" />
+          <ScalarProperty Name="Category_ID" ColumnName="Category_ID" />
+          <ScalarProperty Name="Album_Year" ColumnName="Album_Year" />
+          <ScalarProperty Name="Album_Run_Time" ColumnName="Album_Run_Time" />
+          <ScalarProperty Name="Type_ID" ColumnName="Type_ID" />
+          <ScalarProperty Name="Price_ID" ColumnName="Price_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Album_Category">
+      <EntityTypeMapping TypeName="MusicologyWarehouseModel.Album_Category">
+        <MappingFragment StoreEntitySet="Album_Category">
+          <ScalarProperty Name="Category_ID" ColumnName="Category_ID" />
+          <ScalarProperty Name="Category_Desc" ColumnName="Category_Desc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Album_Price">
+      <EntityTypeMapping TypeName="MusicologyWarehouseModel.Album_Price">
+        <MappingFragment StoreEntitySet="Album_Price">
+          <ScalarProperty Name="Price_ID" ColumnName="Price_ID" />
+          <ScalarProperty Name="Price_Amount" ColumnName="Price_Amount" />
+          <ScalarProperty Name="Price_Desc" ColumnName="Price_Desc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Album_Type">
+      <EntityTypeMapping TypeName="MusicologyWarehouseModel.Album_Type">
+        <MappingFragment StoreEntitySet="Album_Type">
+          <ScalarProperty Name="Type_ID" ColumnName="Type_ID" />
+          <ScalarProperty Name="Type_Desc" ColumnName="Type_Desc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Branches">
+      <EntityTypeMapping TypeName="MusicologyWarehouseModel.Branch">
+        <MappingFragment StoreEntitySet="Branch">
+          <ScalarProperty Name="Branch_ID" ColumnName="Branch_ID" />
+          <ScalarProperty Name="Branch_Name" ColumnName="Branch_Name" />
+          <ScalarProperty Name="Branch_Floor_Size" ColumnName="Branch_Floor_Size" />
+          <ScalarProperty Name="Branch_Phone" ColumnName="Branch_Phone" />
+          <ScalarProperty Name="Branch_Address" ColumnName="Branch_Address" />
+          <ScalarProperty Name="Branch_Contact_Name" ColumnName="Branch_Contact_Name" />
+          <ScalarProperty Name="Branch_City" ColumnName="Branch_City" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Customers">
+      <EntityTypeMapping TypeName="MusicologyWarehouseModel.Customer">
+        <MappingFragment StoreEntitySet="Customer">
+          <ScalarProperty Name="Customer_Acc_No" ColumnName="Customer_Acc_No" />
+          <ScalarProperty Name="Customer_Name" ColumnName="Customer_Name" />
+          <ScalarProperty Name="Customer_Surname" ColumnName="Customer_Surname" />
+          <ScalarProperty Name="Customer_Phone" ColumnName="Customer_Phone" />
+          <ScalarProperty Name="Customer_Email" ColumnName="Customer_Email" />
+          <ScalarProperty Name="Customer_Address" ColumnName="Customer_Address" />
+          <ScalarProperty Name="Customer_City" ColumnName="Customer_City" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Invoices">
+      <EntityTypeMapping TypeName="MusicologyWarehouseModel.Invoice">
+        <MappingFragment StoreEntitySet="Invoice">
+          <ScalarProperty Name="Invoice_Num" ColumnName="Invoice_Num" />
+          <ScalarProperty Name="Branch_ID" ColumnName="Branch_ID" />
+          <ScalarProperty Name="Customer_Acc_No" ColumnName="Customer_Acc_No" />
+          <ScalarProperty Name="Invoice_date" ColumnName="Invoice_date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Invoice_Line">
+      <EntityTypeMapping TypeName="MusicologyWarehouseModel.Invoice_Line">
+        <MappingFragment StoreEntitySet="Invoice_Line">
+          <ScalarProperty Name="Invoice_Num" ColumnName="Invoice_Num" />
+          <ScalarProperty Name="Album_ISBN" ColumnName="Album_ISBN" />
+          <ScalarProperty Name="Purchase_Quantity" ColumnName="Purchase_Quantity" />
+          <ScalarProperty Name="Item_Unit_Price" ColumnName="Item_Unit_Price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Stock_Item">
+      <EntityTypeMapping TypeName="MusicologyWarehouseModel.Stock_Item">
+        <MappingFragment StoreEntitySet="Stock_Item">
+          <ScalarProperty Name="Album_ISBN" ColumnName="Album_ISBN" />
+          <ScalarProperty Name="Branch_ID" ColumnName="Branch_ID" />
+          <ScalarProperty Name="Stock_Total_Quantity" ColumnName="Stock_Total_Quantity" />
+          <ScalarProperty Name="Stock_Quantity_Sold" ColumnName="Stock_Quantity_Sold" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="MusicologyWarehouseModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

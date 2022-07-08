@@ -1,0 +1,8 @@
+C:\Users\ADMIN\source\repos\BMI Calculator\bin\Debug\BMI Calculator.exe.config
+C:\Users\ADMIN\source\repos\BMI Calculator\bin\Debug\BMI Calculator.exe
+C:\Users\ADMIN\source\repos\BMI Calculator\bin\Debug\BMI Calculator.pdb
+C:\Users\ADMIN\source\repos\BMI Calculator\obj\Debug\BMI Calculator.csproj.AssemblyReference.cache
+C:\Users\ADMIN\source\repos\BMI Calculator\obj\Debug\BMI Calculator.csproj.SuggestedBindingRedirects.cache
+C:\Users\ADMIN\source\repos\BMI Calculator\obj\Debug\BMI Calculator.csproj.CoreCompileInputs.cache
+C:\Users\ADMIN\source\repos\BMI Calculator\obj\Debug\BMI Calculator.exe
+C:\Users\ADMIN\source\repos\BMI Calculator\obj\Debug\BMI Calculator.pdb

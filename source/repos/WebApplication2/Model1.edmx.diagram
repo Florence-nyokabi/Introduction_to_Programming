@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="89b25d82421f40e19e7d0abf82c89929" Name="Diagram1">
+        <EntityTypeShape EntityType="MusicologyWarehouseModel.Album" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="MusicologyWarehouseModel.Album_Category" Width="1.5" PointX="0.75" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MusicologyWarehouseModel.Album_Price" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MusicologyWarehouseModel.Album_Type" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MusicologyWarehouseModel.Branch" Width="1.5" PointX="3" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MusicologyWarehouseModel.Customer" Width="1.5" PointX="3" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MusicologyWarehouseModel.Invoice" Width="1.5" PointX="5.25" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MusicologyWarehouseModel.Invoice_Line" Width="1.5" PointX="7.5" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MusicologyWarehouseModel.Stock_Item" Width="1.5" PointX="5.25" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MusicologyWarehouseModel.sysdiagram" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
+        <AssociationConnector Association="MusicologyWarehouseModel.FK__Album__Category___31EC6D26" ManuallyRouted="false" />
+        <AssociationConnector Association="MusicologyWarehouseModel.FK__Album__Price_ID__33D4B598" ManuallyRouted="false" />
+        <AssociationConnector Association="MusicologyWarehouseModel.FK__Album__Type_ID__32E0915F" ManuallyRouted="false" />
+        <AssociationConnector Association="MusicologyWarehouseModel.FK__Stock_Ite__Album__36B12243" ManuallyRouted="false" />
+        <AssociationConnector Association="MusicologyWarehouseModel.FK__Invoice__Branch___286302EC" ManuallyRouted="false" />
+        <AssociationConnector Association="MusicologyWarehouseModel.FK__Stock_Ite__Branc__37A5467C" ManuallyRouted="false" />
+        <AssociationConnector Association="MusicologyWarehouseModel.FK__Invoice__Custome__29572725" ManuallyRouted="false" />
+        <AssociationConnector Association="MusicologyWarehouseModel.FK__Invoice_L__Invoi__3A81B327" ManuallyRouted="false" />
+        <AssociationConnector Association="MusicologyWarehouseModel.FK__Invoice_L__Album__3B75D760" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
